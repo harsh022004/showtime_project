@@ -198,6 +198,11 @@ input {
 .btn:active {
   transform: scale(0.98);
 }
+.glass-panel {
+  background: var(--glass);
+  border: 1px solid rgba(255, 255, 255, 0.1)
+}
+
 
 /* ================= SEATS ================= */
 
@@ -367,3 +372,4 @@ i {
     font-size: 10px;
   }
 }
+
