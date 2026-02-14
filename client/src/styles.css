@@ -1,6 +1,4 @@
-
-
-:root {
+:root { 
   --primary: #f84464;
   --bg: #0b0f1a;
   --card: #161d2f;
@@ -10,24 +8,25 @@
   --success: #4caf50;
 }
 
-
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:Poppins;
+  font-family: Poppins;
   text-decoration: none;
 }
 
 body {
   background: var(--bg);
-  color: var(--text)
+  color: var(--text);
+  overflow-x: hidden;
 }
 
 .hidden {
-  display: none !important
+  display: none !important;
 }
+
+/* ================= NAVBAR ================= */
 
 nav {
   display: flex;
@@ -36,16 +35,41 @@ nav {
   padding: 15px 8%;
   background: #0b0f1af0;
   border-bottom: 1px solid rgba(255,255,255,0.05);
+  flex-wrap: wrap;
 }
 
-/* Search Form Container */
+.logo {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.navb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navb span {
+  margin-left: 25px;
+  cursor: pointer;
+  color: var(--text-dim);
+  transition: 0.3s;
+}
+
+.navb span:hover {
+  color: var(--primary);
+}
+
+/* Search */
+
 .search-form {
   flex: 1;
   display: flex;
   justify-content: center;
 }
 
-/* Search Input Field */
 .search-input {
   width: 350px;
   max-width: 100%;
@@ -59,74 +83,60 @@ nav {
   transition: all 0.3s ease;
 }
 
-/* Placeholder */
 .search-input::placeholder {
   color: #94a3b8;
 }
 
-/* Focus Effect */
 .search-input:focus {
   border: 1px solid var(--primary);
   box-shadow: 0 0 10px rgba(248, 68, 100, 0.5);
   background: #202a45;
 }
 
-
-.logo {
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--primary);
-  cursor: pointer
-}
-
-.navb span {
-  margin-left: 25px;
-  cursor: pointer;
-  color: var(--text-dim);
-  transition: 0.3s;
-  
-}
-
-.navb span:hover {
-  color: var(--primary)
-}
+/* ================= PAGE ================= */
 
 .page {
   padding: 60px 8%;
-  min-height: 90vh
+  min-height: 90vh;
 }
 
-/* Movie Grid */
+/* ================= MOVIE GRID ================= */
+
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 30px
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
 }
 
 .movie-card {
-
   background: var(--card);
   border-radius: 15px;
   overflow: hidden;
   cursor: pointer;
-  transition: .3s
+  transition: transform .3s ease, box-shadow .3s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .movie-card:hover {
-  transform: scale(1.05)
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
 .movie-card img {
   width: 100%;
-  height: 320px;
-  object-fit: cover
+  height: clamp(220px, 30vw, 320px);
+  object-fit: cover;
 }
 
 .movie-card div {
-  padding: 15px
+  padding: 15px;
+  flex: 1;
 }
 
-/* Forms & Modals */
+/* ================= AUTH ================= */
+
 .auth-overlay {
   position: fixed;
   top: 0;
@@ -138,14 +148,23 @@ nav {
   align-items: center;
   justify-content: center;
   z-index: 2000;
+  padding: 20px;
+}
+
+.auth-page {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
 .auth-card {
-  background: var(--card);
+  background: #161d2f;
   padding: 40px;
-  border-radius: 20px;
   width: 100%;
   max-width: 400px;
+  border-radius: 12px;
   text-align: center;
 }
 
@@ -159,7 +178,8 @@ input {
   color: #fff;
 }
 
-/* UI Elements */
+/* ================= BUTTON ================= */
+
 .btn {
   padding: 12px 24px;
   border: none;
@@ -172,24 +192,20 @@ input {
 .btn-primary {
   background: var(--primary);
   color: #fff;
-  width: 100%
+  width: 100%;
 }
 
 .btn:active {
   transform: scale(0.98);
 }
 
-.glass-panel {
-  background: var(--glass);
-  border: 1px solid rgba(255, 255, 255, 0.1)
-}
+/* ================= SEATS ================= */
 
-/* Seat UI */
 .row {
   display: flex;
   justify-content: center;
   gap: 8px;
-  flex-wrap: wrap
+  flex-wrap: wrap;
 }
 
 .seat {
@@ -201,11 +217,11 @@ input {
   align-items: center;
   justify-content: center;
   font-size: 10px;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .seat.selected {
-  background: var(--primary)
+  background: var(--primary);
 }
 
 .screen {
@@ -219,21 +235,23 @@ input {
   font-size: 12px;
 }
 
-/* Admin Table */
+/* ================= ADMIN TABLE ================= */
+
 table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   background: var(--card);
   border-radius: 10px;
-  overflow: hidden;
+  overflow-x: auto;
+  display: block;
 }
 
-th,
-td {
+th, td {
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid #2e3748;
+  white-space: nowrap;
 }
 
 th {
@@ -241,12 +259,14 @@ th {
   color: var(--primary);
 }
 
-/* Ticket */
+/* ================= TICKET ================= */
+
 .ticket {
   background: #fff;
   color: #000;
   border-radius: 15px;
   display: flex;
+  flex-wrap: wrap;
   max-width: 600px;
   margin: 20px auto;
   overflow: hidden;
@@ -255,7 +275,7 @@ th {
 .ticket-left {
   padding: 25px;
   flex: 2;
-  border-right: 2px dashed #ccc
+  border-right: 2px dashed #ccc;
 }
 
 .ticket-right {
@@ -264,53 +284,86 @@ th {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700
-}
-.auth-page {
-  min-height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-weight: 700;
 }
 
-/* Card */
-.auth-card {
-  background: #161d2f;
-  padding: 40px;
-  width: 350px;
-  border-radius: 12px;
+/* ================= ICON ================= */
+
+i {
+  font-size: clamp(28px, 5vw, 50px);
+  display: block;
+  margin: 0px 0px 5px auto;
   text-align: center;
+  transition: 0.3s ease;
 }
 
-.auth-card input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: none;
-  background: #1f2937;
-  color: white;
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 992px) {
+
+  nav {
+    padding: 15px 5%;
+  }
+
+  .search-input {
+    width: 250px;
+  }
+
+  .page {
+    padding: 50px 5%;
+  }
+
+  .movie-grid {
+    gap: 25px;
+  }
+
+  .ticket {
+    flex-direction: column;
+  }
+
+  .ticket-left {
+    border-right: none;
+    border-bottom: 2px dashed #ccc;
+  }
 }
 
-.btn-primary {
-  width: 100%;
-  padding: 10px;
-  background: var(--primary);
-  border: none;
-  border-radius: 6px;
-  color: white;
-  cursor: pointer;
-}
+@media (max-width: 576px) {
 
-.login-btn {
-  color: var(--primary);
-  
-}
+  nav {
+    flex-direction: column;
+    gap: 15px;
+  }
 
-i{
- 
-  font-size: 50px;
-  margin-left:  160px;
-  margin-top: -50px;
-  margin-bottom: auto;
+  .navb span {
+    margin-left: 15px;
+    font-size: 14px;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .movie-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 20px;
+  }
+
+  .seat {
+    width: 24px;
+    height: 24px;
+    font-size: 8px;
+  }
+
+  .auth-card {
+    padding: 25px;
+  }
+
+  th, td {
+    padding: 10px;
+    font-size: 12px;
+  }
+
+  .screen {
+    font-size: 10px;
+  }
 }
