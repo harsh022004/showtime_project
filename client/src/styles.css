@@ -249,7 +249,7 @@ table {
   background: var(--card);
   border-radius: 10px;
   overflow-x: auto;
-  display: block;
+  overflow: hidden;
 }
 
 th, td {
@@ -372,4 +372,5 @@ i {
     font-size: 10px;
   }
 }
+
 
